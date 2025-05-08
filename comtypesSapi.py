@@ -4,6 +4,8 @@
 #     "comtypes",
 # ]
 # ///
+
+import logging
 from ctypes import (
     POINTER,
     Structure,
@@ -15,9 +17,18 @@ from ctypes import (
     _Pointer,
 )
 from ctypes.wintypes import DWORD
+import sys
 from typing import TYPE_CHECKING
 import comtypes.client
 from comtypes import COMObject, IUnknown, hresult, GUID, COMMETHOD, HRESULT
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(levelname)s - %(message)s",  # Log format
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ],
+)
 
 
 class FILETIME(Structure):
